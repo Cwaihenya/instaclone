@@ -9,7 +9,7 @@ class PostsController < ApplicationController
     # GET /posts/1 or /posts/1.json
     def show
 
-      @favorite = current_user.favorites.find_by(post_id: @post.id)
+    #  @favorite = current_user.favorites.find_by(post_id: @post.id)
     end
 
     # GET /posts/new
@@ -81,4 +81,3 @@ class PostsController < ApplicationController
       def post_params
         params.require(:post).permit(:caption, :image, :image_cache)
       end
-end

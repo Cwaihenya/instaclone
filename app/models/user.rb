@@ -8,6 +8,7 @@ validates_integrity_of  :avatar
                      format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
                      has_secure_password
                        validates :password, presence: true, length: { minimum: 6 }
+has_many :posts
   private
     def avatar_size_validation
       errors[:avatar] << "should be less than 500KB" if avatar.size > 0.5.megabytes

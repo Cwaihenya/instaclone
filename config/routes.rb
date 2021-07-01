@@ -5,5 +5,6 @@ Rails.application.routes.draw do
       post :confirm
     end
   end
-resources :sessions, only: [:new, :create, :destroy]  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+resources :sessions, only: [:new, :create, :destroy]
+mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 end
