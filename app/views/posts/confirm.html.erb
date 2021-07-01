@@ -1,0 +1,15 @@
+h3> Do you want to post the following content?</h3>
+
+<%= form_with(model: @post,url: posts_path, local: true) do |form| %>
+  <%= form.hidden_field :caption %>
+  <p>
+    <%= @post.caption %>
+  </p>
+  <%= image_tag(@post.image.url) if @post.image && @post.image.url %>
+  <%= form.hidden_field :image_cache %>
+  <%= form.submit "To post" %>
+<% end %>
+<%= form_with(model:@post, url: new_post_path, local:true, method:"get") do |form| %>
+  <%= form.hidden_field :image_cache %>
+  <%= form.submit "Return", name: "back" %>
+<% end %>
