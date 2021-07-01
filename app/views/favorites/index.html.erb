@@ -1,0 +1,18 @@
+<h1>Favorites list</h1>
+
+<table>
+  <tr>
+    <th>Username</th>
+    <th>Content</th>
+    <th>post</th>
+  </tr>
+  <tr>
+    <% @favorites.each do |favorite| %>
+    <td><%= favorite.post.user.name %></td>
+    <td><%= favorite.post.content %></td>
+    <td><%= image_tag favorite.post.image.url %></td>
+  </tr>
+<% end %>
+</table>
+
+  <%= link_to 'Back', posts_path %>

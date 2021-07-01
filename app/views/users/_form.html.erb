@@ -14,12 +14,12 @@
   <div class="field">
     <%= form.label :name %>
     <%= form.text_field :name %>
-  </div>
+  </div><br>
 
   <div class="field">
     <%= form.label :email %>
     <%= form.text_field :email %>
-  </div>
+  </div><br>
   <div class="field">
     <%= form.label :password %>
     <%= form.text_field :password%>
@@ -27,13 +27,13 @@
   <div class="field">
     <%= form.label :password_confirmation %>
     <%= form.text_field :password_confirmation %>
-  </div>
+  </div><br>
 
   <div class="field">
     <%= form.label :avatar %>
-    <%= avatar_tag(@user.avatar.url) if @user.avatar && @user.avatar.url %>
+    <%= image_tag(@user.avatar.url) if @user.avatar && @user.avatar.url %>
     <%= form.file_field :avatar %>
-     <%= form.hidden_field :avatar_cache %>
+     <%= form.hidden_field :avatar_cache %><br>
 
   <div class="actions">
     <%= form.submit %>

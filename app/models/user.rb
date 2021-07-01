@@ -9,6 +9,7 @@ validates_integrity_of  :avatar
                      has_secure_password
                        validates :password, presence: true, length: { minimum: 6 }
 has_many :posts
+has_many :favorites, dependent: :destroy
   private
     def avatar_size_validation
       errors[:avatar] << "should be less than 500KB" if avatar.size > 0.5.megabytes

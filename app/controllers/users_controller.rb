@@ -9,6 +9,10 @@ class UsersController < ApplicationController
 
   # GET /users/1 or /users/1.json
   def show
+    @users = User.all
+      @user = User.find(params[:id])
+      @posts =@user.posts
+      @favorites = @user.favorites
   end
 
   # GET /users/new
@@ -18,22 +22,20 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+      @user = User.find(params[:id])
   end
 
   # POST /users or /users.json
   def create
-    @user = User.new(user_params)
+        @user = User.new(user_params)
+        if @user.save
 
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to @user, notice: "User was successfully created." }
-        format.json { render :show, status: :created, location: @user }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+          redirect_to user_path(@user.id), notice: "Account was successfully created"
+          session[:user_id] = @user.id
+        else
+          render :new
+        end
       end
-    end
-  end
 
   # PATCH/PUT /users/1 or /users/1.json
   def update
